@@ -70,7 +70,7 @@ ul#ulxx li{
   display: inline-block;
 
   border: none;
-  width: 33%;
+  width: 24%;
 
 }
 
@@ -112,6 +112,7 @@ float: right;
   display: flex;
   flex-wrap: nowrap;
   background-color: #8fc1e3;
+  min-height: 300px;
 }
 
 #leftBox{
@@ -127,6 +128,14 @@ float: right;
   position: relative;
   background-color: #f7f9fb;
 }
+
+#bodyLogout{
+  float: left;
+  width: 100%;
+  position: relative;
+  background-color: #f7f9fb;
+}
+
 #firstName
 {
     width:44%;

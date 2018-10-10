@@ -10,6 +10,8 @@ $('#personalInformationButton').click(function(){
 });
 //here ends the personalInformationButton section
 
+
+
 //this is the myPreferenceButton section
 var count = 3;
 var allowx = true;
@@ -46,6 +48,11 @@ $('#'+id1).remove();
 });
 //here ends the myPreferenceButton section
 
+
+
+/*
+    Here is the alert box section. These alerts create a popup box when certain paragraphs are clicked.
+*/
 $('#ritzButton').click(function(){ //alert pop up box for Hotel Ritz Madrid
   alert(ritzButtonString);
 });
@@ -56,6 +63,17 @@ $('#ardosa').click(function(){ //alert pop up box for La Ardosa
 
 $('#sacha').click(function(){ //alert pop up box for Sacha
   alert(sachaButtonString);
+});
+
+
+/*
+    HERE IS THE START OF THE LOGOUT PAGE. YOU WILL PROBABLY BE BASING A LOT OF CODE ON THIS WHEN YOU DO LOGIN AND REGISTER SO MAKE SURE YOU READ OVER THIS AND THE CORRESPONDING HTML TAGS!!!!!
+*/
+$('#logout').click(function(){
+  $('#body').html("<div id='bodyLogout'></div>");
+  $('#ulxx').html('<li class="firstH"><a>Register</a></li><li class="secondH"><a>Login</a></li>');
+
+  //After this, you should now make new click events for login and register. To make things cleaner, make a seperate helper function that you call inside your event listener! You should change what is in the #bodyLogout div element not the #body element. This will keep the css looking good.
 });
 
 
