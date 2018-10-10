@@ -199,6 +199,27 @@ hr {
   border-width: 0px;
   overflow: hidden;
 }
+.popup {
+    position: relative;
+    display: inline-block;
+}
+
+.popup .actualpopup{
+  visibility: hidden;
+  width: 50%;
+  background color: #000;
+  color: #fff;
+  text-align: center
+  padding: 10px 0;
+  position: absolute;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -80px;
+}
+
+.popup .display{
+  visibility: visible;
+}
 h5{
   display: block;
   overflow: hidden;
