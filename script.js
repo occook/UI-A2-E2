@@ -72,22 +72,7 @@ $('#sacha').click(function(){ //alert pop up box for Sacha
 });
 
 
-/*
-    HERE IS THE START OF THE LOGOUT PAGE. YOU WILL PROBABLY BE BASING A LOT OF CODE ON THIS WHEN YOU DO LOGIN AND REGISTER SO MAKE SURE YOU READ OVER THIS AND THE CORRESPONDING HTML TAGS!!!!!
-*/
-$('#logout').click(function(){
-  $('#body').html("<div id='bodyLogout'></div>");
-  $('#ulxx').html('<li id = "register" class="firstH"><a>Register</a></li><li id="logIn" class="secondH"><a>Login</a></li>');
-  $('#register').click(function(){
-    $('#bodyLogout').html(registerForm);
-  });
-  //After this, you should now make new click events for login and register. To make things cleaner, make a seperate helper function that you call inside your event listener! You should change what is in the #bodyLogout div element not the #body element. This will keep the css looking good.
-  //below is the logIn button function
-  $('#logIn').click(function(){
-    $('#bodyLogout').html(logInForm);
 
-  });
-});
 /*
     MOVED ALL OF THE LARGE STRINGS HERE SO WE DON'T HAVE TO LOOK AT ALL OF THIS JUNK. NOW WE CAN QUICKLY THROUGH OUR ACTUAL IMPORTANT CODE RATHER THAN THESE LONG STRINGS.
 */
@@ -100,7 +85,3 @@ var ritzButtonString = "Name: Hotel Ritz Madrid\nAddress: Plaza de la Lealtad, 5
 var ardosaString = "Name: La Ardosa\nAddress: Calle de Colon, 13, 28004 Madrid\nWebsite: http://www.laardosa.es/ \nTelephone Number: (+34) 91 521 49 79 \nEmail: N/A \nFacebook: Bodega La Ardosa\nPrice: $$-$$$ (Moderately Priced)\nDescription: They offer a wide variety of Irish beers at very reasonable prices, vermouth on tap, lagers, fine wines from La Ribera and Rioja. For snacks, they offer a variety of 'tapas', 'salmorejo' (a thick, cold tomato and garlic soup), cold meats, cured meat from Leon, duck ham and potato omelette, among other things. \nOpinion: This is a great bodega in a busy and popular area of the city. It gets pretty crowded at night so I would recommend getting there early to secure a good seat. I heard that they are famous for their tortillas and they lived up to the expectation! Very fair pricing as well";
 
 var sachaButtonString = "Name: Restaurante Sacha\nAddress: 11, Calle de Juan Hurtado de Mendoza, 28036 Madrid\nTrip Advisor: https://www.tripadvisor.com/Restaurant_Review-g187514-d991775-Reviews-Sacha-Madrid.html \nTelephone Number: (+34) 913 45 59 52 \nEmail: N/A \nFacebook: Restaurante Sacha\nPrice: $$$$ (Expensive)\nDescription: Sacha, an old-school Spanish restaurant that was originally started by a couple who named the place after their only son. As luck would have it, Sacha is now the head chef and proprietor, helming a menu that has become a staple for Madrid foodies. The offerings here change seasonally, but the selection always has its foundation in traditional Spanish cuisine \nOpinion: This is a top tier restaurant in Madrid. It is a very popular restaurant with the locals and there are not many tourists! They have a great wine list and every item on the menu has been carefully thought out. It is a little hard to find, but I will be back next time I am in Madrid!";
-//registerForm html
-var registerForm = "<b>Account Information</b><br><form name='regForm' onsubmit='return regVal() method = 'post'>Username: <input type='text' name='username' required><br>Password: <input type = 'password' pattern = '[a-z0-9]{1,8}' name = 'psw'required><br><br><b>Personal Information</b><br>First Name: <input type='text' name='firstName' required><br>Last Name: <input type = 'text' name = 'lastName' required><br>E-mail Address: <input type = 'email' name = 'email' required><br>Birthday: <input type = 'date' name = 'birthday' required><br>Address: <input type = 'text' name = 'address' required><br>Profile Picture: <input type = 'file' name = 'profilePicture'><br><br><input type = 'checkbox' name = 'terms' value = 'read' required>I have read and accept the terms of use<br><br><input type = 'submit' value = 'Save'><br><input type = 'reset' value = 'Delete'> </form>";
-//logIn form html
-var logInForm = "<b>Account Log In</b><br><form name='regForm' onsubmit='return regVal() method = 'post'>Username: <input type='text' name='username' required><br>Password: <input type = 'password' pattern = '[a-z0-9]{1,8}' name = 'psw'required><br><br><br><br><input type = 'submit' value = 'Log In'></form>";
