@@ -176,9 +176,12 @@ float: right;
   text-align: left;
 }
 
-#brose{
+#browse{
   text-align: center;
+  display: inline-block;
+  border: none;
 }
+
 hr {
     display: block;
     height: 10px;
