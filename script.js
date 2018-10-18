@@ -118,7 +118,7 @@ function getCookie(cname){
 function storeValues(form){
   var count = 0;
     for (int i=0; i<=globalcookie; i++){
-    if (regForm.email.value === getCookie('email')){ //If email already exists.
+    if (regForm.email.value === getCookie('email'+i)){ //If email already exists.
       alert('You are already registered');
       break;
       }
