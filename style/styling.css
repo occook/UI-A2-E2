@@ -175,6 +175,10 @@ float: right;
 #opinions{
   text-align: left;
 }
+
+#brose{
+  text-align: center;
+}
 hr {
     display: block;
     height: 10px;
