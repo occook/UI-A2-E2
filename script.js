@@ -80,6 +80,7 @@ $('#logout').click(function(){
   $('#ulxx').html('<li id = "register" class="firstH"><a>Register</a></li><li id="logIn" class="secondH"><a>Login</a></li>');
   $('#register').click(function(){
     $('#bodyLogout').html(registerForm);
+
   });
   //After this, you should now make new click events for login and register. To make things cleaner, make a seperate helper function that you call inside your event listener! You should change what is in the #bodyLogout div element not the #body element. This will keep the css looking good.
   //below is the logIn button function
