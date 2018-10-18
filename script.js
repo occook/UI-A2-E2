@@ -116,21 +116,26 @@ function getCookie(cname){
 }
 
 function storeValues(form){
+  var count = 0;
+    for (int i=0; i<=globalcookie; i++){
     if (regForm.email.value === getCookie('email')){ //If email already exists.
       alert('You are already registered');
+      break;
+      }
+      count++;
     }
-
-    else{
-    setCookie('username', regForm.username.value);
-    setCookie('psw', regForm.psw.value);
-    setCookie('firstName', regForm.firstName.value);
-    setCookie('lastName', regForm.lastName.value);
-    setCookie('email', regForm.email.value);
-    setCookie('birthday', regForm.birthday.value);
-    setCookie('address', regForm.address.value);
-    setCookie('profilePicture', regForm.profilePicture.value);
+    if (count == globalcookie){
+        setCookie('username', regForm.username.value);
+        setCookie('psw', regForm.psw.value);
+        setCookie('firstName', regForm.firstName.value);
+        setCookie('lastName', regForm.lastName.value);
+        setCookie('email', regForm.email.value);
+        setCookie('birthday', regForm.birthday.value);
+        setCookie('address', regForm.address.value);
+        setCookie('profilePicture', regForm.profilePicture.value);
+        globalcookie++;
+      }
     }
-    globalcookie++;
     return true;
 }
 /*
