@@ -59,17 +59,37 @@ $('#'+id1).remove();
 /*
     Here is the alert box section. These alerts create a popup box when certain paragraphs are clicked.
 */
-$('#ritzButton').click(function(){ //alert pop up box for Hotel Ritz Madrid
-  alert(ritzButtonString);
-});
+var modal = document.getElementById('myModal'); //create modal boxes here
+var btn = document.getElementById("ritzButton");
+var span = document.getElementsByClassName("close")[0];
+btn.onclick=function(){
+  modal.style.display = "block";
+}
+span.onclick = function() {
+    modal.style.display = "none";
+}
 
-$('#ardosa').click(function(){ //alert pop up box for La Ardosa
-  alert(ardosaString);
-});
 
-$('#sacha').click(function(){ //alert pop up box for Sacha
-  alert(sachaButtonString);
-});
+var modal2 = document.getElementById('ardosaM'); //create modal boxes here
+var btn2 = document.getElementById("ardosa");
+var span2 = document.getElementsByClassName("close")[1];
+btn2.onclick=function(){
+  modal2.style.display = "block";
+}
+span2.onclick = function() {
+    modal2.style.display = "none";
+}
+
+var modal3 = document.getElementById('sachaM'); //create modal boxes here
+var btn3 = document.getElementById("sacha");
+var span3 = document.getElementsByClassName("close")[2];
+btn3.onclick=function(){
+  modal3.style.display = "block";
+}
+span3.onclick = function() {
+    modal3.style.display = "none";
+}
+
 
 
 /*
