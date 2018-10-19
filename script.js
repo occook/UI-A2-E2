@@ -19,40 +19,44 @@ $('#personalInformationButton').click(function(){
 
 
 //this is the myPreferenceButton section
-var count = 3;
-var allowx = true;
+var count = 3; //initial # of buttons is 3
+var allowx = true; //allow the buttons to be deleted
 $('#myPreferenceButton').click(function (event){
-  if(allowx==false){
+  if(allowx==false){ //do not allow a new one to be made
     event.preventDefault();
     return false;
   }
-  count++;
+  count++; //add one to the number of buttons
   //this part appends a new box
-  $('#preferencesAdded').append("<div id = 'pref'>   <input type = 'text' id = 'firstNameIn' value = ''><!-- preference x  --><button class='btn'><i class='fa fa-close'></i></button> <!-- x button  --></div> <br>");
-  $('#pref').attr('id','pref'+count);
-  $('#firstNameIn').attr('id','firstNameIn'+count);
+  $('#preferencesAdded').append("<div id = 'pref'>   <input type = 'text' id = 'firstNameIn' value = ''><!-- preference x  --><button class='btn' id ='xbtn'><i class='fa fa-close'></i></button> <!-- x button  --></div> <br>");
+  $('#pref').attr('id','pref'+count); //append a new button above here this sets the id of the new button
+  $('#firstNameIn').attr('id','firstNameIn'+count); //the id of the text
    allowx = false;
+
    //this part will stop the listening of myPreferenceButton as well as change the input to a text
   $('#firstNameIn'+count).on('keyup', function(event) {
       if (event.keyCode === 13) {
           allowx=true;
          tex = $('#firstNameIn'+count).val();
          var id1 = $(this).parent().attr('id');
-         $('#'+id1).html("<!-- preference x  --><button class='btn'><i class='fa fa-close'></i></button> <!-- x button  -->");
+         $('#'+id1).html("<!-- preference x  --><button class='btn'><i class='fa fa-close' ></i></button> <!-- x button  -->");
          $('#'+id1).prepend(tex);
-         $('i').click(function(){
-         var id1 = $(this).parent().parent().attr('id');
-         $('#'+id1).remove();
-          });
+         $('#'+id1).click(function(){
+          var id1= $(this).attr('id')
+           $('#' +id1).remove();
+         });
      }
   });
 });
 //this sets the remove button
-$('i').click(function(){
-var id1 = $(this).parent().parent().attr('id');
-$('#'+id1).remove();
-});
+for(x=1; x<=3; x++){
+  $('#pref'+x).click(function(){
+   var id1= $(this).attr('id')
+    $('#' +id1).remove();
+  });
+}
 //here ends the myPreferenceButton section
+
 
 
 
