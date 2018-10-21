@@ -96,6 +96,7 @@ function helperRegister(){
 
 function setCookie(name,value, count){
   document.cookie=name + count + "=" + escape(value) + "; path=/;"
+  document.cookie=name + 'Current' + "=" + escape(value) + "; path=/;"
 }
 
 function getCookie(cname){
@@ -151,7 +152,12 @@ function storeValues(form){
       alert('Password is incorrect');
     }
 
+/*
+This section will change Personal Information to the Current Cookie
+*/
 
+$('#personalInfoName').html('Name: '+ getCookie('firstNameCurrent') + ' ' + getCookie('lastNameCurrent'));
+$('#personalInfoPlace').html('Address: ' + getCookie('addressCurrent'));
 /*
     MOVED ALL OF THE LARGE STRINGS HERE SO WE DON'T HAVE TO LOOK AT ALL OF THIS JUNK. NOW WE CAN QUICKLY THROUGH OUR ACTUAL IMPORTANT CODE RATHER THAN THESE LONG STRINGS.
 */
