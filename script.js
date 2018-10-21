@@ -145,11 +145,20 @@ function storeValues(form){
     function helperLogIn(){
       for (var i=0; i<1000; i++){
         if (getCookie('email'+i)===regForm.logInEmail.value && getCookie('psw'+i)===regForm.psw.value){
-          console.log('There is a match!');
+          setCookie('username', getCookie('username'+i), i);
+          setCookie('psw', getCookie('psw'+i), i);
+          setCookie('firstName', getCookie('firstName'+i), i);
+          setCookie('lastName', getCookie('lastName'+i), i);
+          setCookie('email', getCookie('email'+i), i);
+          setCookie('birthday', getCookie('birthday'+i), i);
+          setCookie('address', getCookie('address'+i), i);
+          setCookie('profilePicture', getCookie('profilePicture'+i), i);
           break;
         }
+        else{
+          alert('Password is incorrect');
+        }
       }
-      alert('Password is incorrect');
     }
 
 /*
