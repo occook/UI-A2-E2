@@ -89,14 +89,13 @@ $('#logout').click(function(){
   });
 });
 
-var globalcookie = 0;
-function helper(){
+function helperRegister(){
   var el = document.getElementById('registerFile');
   storeValues(el);
 }
 
-function setCookie(name,value){
-  document.cookie=name + globalcookie + "=" + escape(value) + "; path=/;"
+function setCookie(name,value, count){
+  document.cookie=name + count + "=" + escape(value) + "; path=/;"
 }
 
 function getCookie(cname){
@@ -117,27 +116,42 @@ function getCookie(cname){
 
 function storeValues(form){
   var count = 0;
-    for (int i=0; i<=globalcookie; i++){
-    if (regForm.email.value === getCookie('email'+i)){ //If email already exists.
+  var add = true;
+    while (count<1000){
+    if (regForm.email.value === getCookie('email'+count)){ //If email already exists.
       alert('You are already registered');
+      add = false; //Do not add new cookie because it already exists
       break;
       }
-      count++;
+    if (getCookie('email'+count) === ""){ //Add cookie in first empty slot
+      break;
     }
-    if (count == globalcookie){
-        setCookie('username', regForm.username.value);
-        setCookie('psw', regForm.psw.value);
-        setCookie('firstName', regForm.firstName.value);
-        setCookie('lastName', regForm.lastName.value);
-        setCookie('email', regForm.email.value);
-        setCookie('birthday', regForm.birthday.value);
-        setCookie('address', regForm.address.value);
-        setCookie('profilePicture', regForm.profilePicture.value);
-        globalcookie++;
+      count++; //Iterate up, we haven't found a blank spot, nor a matching cookie.
+    }
+    if (add){
+        setCookie('username', regForm.username.value, count);
+        setCookie('psw', regForm.psw.value, count);
+        setCookie('firstName', regForm.firstName.value, count);
+        setCookie('lastName', regForm.lastName.value, count);
+        setCookie('email', regForm.email.value, count);
+        setCookie('birthday', regForm.birthday.value, count);
+        setCookie('address', regForm.address.value, count);
+        setCookie('profilePicture', regForm.profilePicture.value, count);
       }
+      return true;
     }
-    return true;
-}
+
+    function helperLogIn(){
+      for (var i=0; i<1000; i++){
+        if (getCookie('email'+i)===regForm.logInEmail.value && getCookie('psw'+i)===regForm.psw.value){
+          console.log('There is a match!');
+          break;
+        }
+      }
+      alert('Password is incorrect');
+    }
+
+
 /*
     MOVED ALL OF THE LARGE STRINGS HERE SO WE DON'T HAVE TO LOOK AT ALL OF THIS JUNK. NOW WE CAN QUICKLY THROUGH OUR ACTUAL IMPORTANT CODE RATHER THAN THESE LONG STRINGS.
 */
@@ -151,6 +165,6 @@ var ardosaString = "Name: La Ardosa\nAddress: Calle de Colon, 13, 28004 Madrid\n
 
 var sachaButtonString = "Name: Restaurante Sacha\nAddress: 11, Calle de Juan Hurtado de Mendoza, 28036 Madrid\nTrip Advisor: https://www.tripadvisor.com/Restaurant_Review-g187514-d991775-Reviews-Sacha-Madrid.html \nTelephone Number: (+34) 913 45 59 52 \nEmail: N/A \nFacebook: Restaurante Sacha\nPrice: $$$$ (Expensive)\nDescription: Sacha, an old-school Spanish restaurant that was originally started by a couple who named the place after their only son. As luck would have it, Sacha is now the head chef and proprietor, helming a menu that has become a staple for Madrid foodies. The offerings here change seasonally, but the selection always has its foundation in traditional Spanish cuisine \nOpinion: This is a top tier restaurant in Madrid. It is a very popular restaurant with the locals and there are not many tourists! They have a great wine list and every item on the menu has been carefully thought out. It is a little hard to find, but I will be back next time I am in Madrid!";
 //registerForm html
-var registerForm = "<b>Account Information</b><br><form id='registerFile' method='post' onsubmit='helper()' name='regForm'>Username: <input type='text' name='username' required><br>Password: <input type = 'password' pattern = '[a-z0-9]{1,8}' name = 'psw'required><br><br><b>Personal Information</b><br>First Name: <input type='text' name='firstName' required><br>Last Name: <input type = 'text' name = 'lastName' required><br>E-mail Address: <input type = 'email' name = 'email' required><br>Birthday: <input type = 'date' name = 'birthday' required><br>Address: <input type = 'text' name = 'address' required><br><br><br>Profile Picture: <div id='browse'><input type = 'file' name = 'profilePicture'></div><br><br><input type = 'checkbox' name = 'terms' value = 'read' required>I have read and accept the terms of use<br><br><input type = 'submit' value = 'Save'><br><input type = 'reset' value = 'Delete'> </form>";
+var registerForm = "<b>Account Information</b><br><form id='registerFile' method='post' onsubmit='helperRegister()' name='regForm'>Username: <input type='text' name='username' required><br>Password: <input type = 'password' pattern = '[a-z0-9]{1,8}' name = 'psw'required><br><br><b>Personal Information</b><br>First Name: <input type='text' name='firstName' required><br>Last Name: <input type = 'text' name = 'lastName' required><br>E-mail Address: <input type = 'email' name = 'email' required><br>Birthday: <input type = 'date' name = 'birthday' required><br>Address: <input type = 'text' name = 'address' required><br><br><br>Profile Picture: <div id='browse'><input type = 'file' name = 'profilePicture'></div><br><br><input type = 'checkbox' name = 'terms' value = 'read' required>I have read and accept the terms of use<br><br><input type = 'submit' value = 'Save'><br><input type = 'reset' value = 'Delete'> </form>";
 //logIn form html
-var logInForm = "<b>Account Log In</b><br><form name='regForm' onsubmit='return regVal() method = 'post'>Email: <input type='email' name='logInEmail' required><br>Password: <input type = 'password' pattern = '[a-z0-9]{1,8}' name = 'psw'required><br><br><br><br><input type = 'submit' value = 'Log In'></form>";
+var logInForm = "<b>Account Log In</b><br><form name='regForm' method='post' onsubmit='helperLogIn()'>Email: <input type='email' name='logInEmail' required><br>Password: <input type = 'password' pattern = '[a-z0-9]{1,8}' name = 'psw'required><br><br><br><br><input type = 'submit' value = 'Log In'></form>";
