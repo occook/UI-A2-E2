@@ -129,7 +129,7 @@ function storeValues(form){
     }
       count++; //Iterate up, we haven't found a blank spot, nor a matching cookie.
     }
-    if (add){
+    if (add){ //Puts all of the information into a cookie
         setCookie('username', regForm.username.value, count);
         setCookie('psw', regForm.psw.value, count);
         setCookie('firstName', regForm.firstName.value, count);
@@ -142,7 +142,7 @@ function storeValues(form){
       return true;
     }
 
-    function helperLogIn(){
+    function helperLogIn(){ //Sets new current cookie on login
       for (var i=0; i<1000; i++){
         if (getCookie('email'+i)===regForm.logInEmail.value && getCookie('psw'+i)===regForm.psw.value){
           setCookie('username', getCookie('username'+i), i);
@@ -156,7 +156,7 @@ function storeValues(form){
           break;
         }
         else{
-          alert('Password is incorrect');
+          alert('Password is incorrect'); //Alerts that password is incorrect
         }
       }
     }
