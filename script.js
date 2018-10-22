@@ -153,12 +153,10 @@ function storeValues(form){
           setCookie('birthday', getCookie('birthday'+i), i);
           setCookie('address', getCookie('address'+i), i);
           setCookie('profilePicture', getCookie('profilePicture'+i), i);
-          break;
-        }
-        else{
-          alert('Password is incorrect'); //Alerts that password is incorrect
+          return;
         }
       }
+      alert('Password is incorrect'); //Alerts that password is incorrect
     }
 
 /*
