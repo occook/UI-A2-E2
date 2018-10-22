@@ -177,20 +177,23 @@ function storeValues(form){ //this form puts the values in the cookie when you r
           setCookie('birthday', getCookie('birthday'+i), i);
           setCookie('address', getCookie('address'+i), i);
           setCookie('profilePicture', getCookie('profilePicture'+i), i);
-          break;
-        }
-        else{
-          alert('Password is incorrect'); //Alerts that password is incorrect
+          return;
         }
       }
+      alert('Password is incorrect'); //Alerts that password is incorrect
     }
 
 /*
 This section will change Personal Information to the Current Cookie
 */
-
 $('#personalInfoName').html('Name: '+ getCookie('firstNameCurrent') + ' ' + getCookie('lastNameCurrent'));
 $('#personalInfoPlace').html('Address: ' + getCookie('addressCurrent'));
+$('#firstName').val(getCookie('firstNameCurrent'));
+$('#lastName').val(getCookie('lastNameCurrent'));
+$('#email').val(getCookie('emailCurrent'));
+$('#address').val(getCookie('addressCurrent'));
+$('#birthday').val(getCookie('birthdayCurrent'));
+$('#firstName').val(getCookie('firstNameCurrent'));
 /*
     MOVED ALL OF THE LARGE STRINGS HERE SO WE DON'T HAVE TO LOOK AT ALL OF THIS JUNK. NOW WE CAN QUICKLY THROUGH OUR ACTUAL IMPORTANT CODE RATHER THAN THESE LONG STRINGS.
 */
