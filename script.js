@@ -113,21 +113,21 @@ $('#logout').click(function(){
   });
 });
 
-function helperRegister(){
+function helperRegister(){  //gets the registerFile form and puts it into storeValues
   var el = document.getElementById('registerFile');
   storeValues(el);
 }
 
-function setCookie(name,value, count){
-  document.cookie=name + count + "=" + escape(value) + "; path=/;"
-  document.cookie=name + 'Current' + "=" + escape(value) + "; path=/;"
+function setCookie(name,value, count){ //concatenates strings together
+  document.cookie=name + count + "=" + escape(value) + "; path=/;"//gets the ASCII version of the  value
+  document.cookie=name + 'Current' + "=" + escape(value) + "; path=/;" //overrides the current cookie
 }
 
 function getCookie(cname){
   var name = cname + "=";
-    var decodedCookie = decodeURIComponent(document.cookie);
+    var decodedCookie = decodeURIComponent(document.cookie); //reverse of escape
     var ca = decodedCookie.split(';');
-    for(var i = 0; i <ca.length; i++) {
+    for(var i = 0; i <ca.length; i++) {//string splits to decode the cookie
         var c = ca[i];
         while (c.charAt(0) == ' ') {
             c = c.substring(1);
@@ -139,8 +139,8 @@ function getCookie(cname){
     return "";
 }
 
-function storeValues(form){
-  var count = 0;
+function storeValues(form){ //this form puts the values in the cookie when you register
+  var count = 0; //sets the base
   var add = true;
     while (count<1000){
     if (regForm.email.value === getCookie('email'+count)){ //If email already exists.
@@ -167,7 +167,7 @@ function storeValues(form){
     }
 
     function helperLogIn(){ //Sets new current cookie on login
-      for (var i=0; i<1000; i++){
+    for (var i=0; i<1000; i++){//searches through every cookie to see if the username and passwrd are the same
         if (getCookie('email'+i)===regForm.logInEmail.value && getCookie('psw'+i)===regForm.psw.value){
           setCookie('username', getCookie('username'+i), i);
           setCookie('psw', getCookie('psw'+i), i);
@@ -203,7 +203,7 @@ var ritzButtonString = "Name: Hotel Ritz Madrid\nAddress: Plaza de la Lealtad, 5
 var ardosaString = "Name: La Ardosa\nAddress: Calle de Colon, 13, 28004 Madrid\nWebsite: http://www.laardosa.es/ \nTelephone Number: (+34) 91 521 49 79 \nEmail: N/A \nFacebook: Bodega La Ardosa\nPrice: $$-$$$ (Moderately Priced)\nDescription: They offer a wide variety of Irish beers at very reasonable prices, vermouth on tap, lagers, fine wines from La Ribera and Rioja. For snacks, they offer a variety of 'tapas', 'salmorejo' (a thick, cold tomato and garlic soup), cold meats, cured meat from Leon, duck ham and potato omelette, among other things. \nOpinion: This is a great bodega in a busy and popular area of the city. It gets pretty crowded at night so I would recommend getting there early to secure a good seat. I heard that they are famous for their tortillas and they lived up to the expectation! Very fair pricing as well";
 
 var sachaButtonString = "Name: Restaurante Sacha\nAddress: 11, Calle de Juan Hurtado de Mendoza, 28036 Madrid\nTrip Advisor: https://www.tripadvisor.com/Restaurant_Review-g187514-d991775-Reviews-Sacha-Madrid.html \nTelephone Number: (+34) 913 45 59 52 \nEmail: N/A \nFacebook: Restaurante Sacha\nPrice: $$$$ (Expensive)\nDescription: Sacha, an old-school Spanish restaurant that was originally started by a couple who named the place after their only son. As luck would have it, Sacha is now the head chef and proprietor, helming a menu that has become a staple for Madrid foodies. The offerings here change seasonally, but the selection always has its foundation in traditional Spanish cuisine \nOpinion: This is a top tier restaurant in Madrid. It is a very popular restaurant with the locals and there are not many tourists! They have a great wine list and every item on the menu has been carefully thought out. It is a little hard to find, but I will be back next time I am in Madrid!";
-//registerForm html
+//registerForm html.  when you click submit it runs the helperRegister function
 var registerForm = "<b>Account Information</b><br><form id='registerFile' method='post' onsubmit='helperRegister()' name='regForm'>Username: <input type='text' name='username' required><br>Password: <input type = 'password' pattern = '[a-z0-9]{1,8}' name = 'psw'required><br><br><b>Personal Information</b><br>First Name: <input type='text' name='firstName' required><br>Last Name: <input type = 'text' name = 'lastName' required><br>E-mail Address: <input type = 'email' name = 'email' required><br>Birthday: <input type = 'date' name = 'birthday' required><br>Address: <input type = 'text' name = 'address' required><br><br><br>Profile Picture: <div id='browse'><input type = 'file' name = 'profilePicture'></div><br><br><input type = 'checkbox' name = 'terms' value = 'read' required>I have read and accept the terms of use<br><br><input type = 'submit' value = 'Save'><br><input type = 'reset' value = 'Delete'> </form>";
-//logIn form html
+//logIn form html.  when you click submit it runs the helperLogIn function
 var logInForm = "<b>Account Log In</b><br><form name='regForm' method='post' onsubmit='helperLogIn()'>Email: <input type='email' name='logInEmail' required><br>Password: <input type = 'password' pattern = '[a-z0-9]{1,8}' name = 'psw'required><br><br><br><br><input type = 'submit' value = 'Log In'></form>";
